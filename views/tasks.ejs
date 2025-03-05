@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div class="container">
+        
+        <form>
+            <div class="input-group">
+                <label for="title">Title</label>
+                <input id="title" type="text" name="title" required />
+            </div>
+    
+            <div class="input-group">
+                <label for="description">Description</label>
+                <input id="description" type="text" name="description" required />
+            </div>
+    
+            <div class="input-group">
+              <button type="submit">+ Add Task</button>
+            </div>                
+        </form>
+        
+
+        <!-- <hr /> -->
+
+        <div class="table">
+          <div class="row header">
+            <div class="column col1">Title</div>
+            <div class="column col2">Description</div>
+            <div class="column col3">Actions</div>
+          </div>
+
+          <% tasks.forEach((item) => { %>
+          <div class="row <% if (item.completed) { %>completed<% } %>">
+            <div class="column col1"><%= item.title %></div>
+            <div class="column col2"><%= item.description %></div>
+            <div class="column col3">
+              <button class="complete" type="submit"><% if (item.completed) { %> Remove Completed <% } else { %> Complete Task  <% } %></button>
+              <button class="delete" type="submit">Delete</button>
+            </div>
+          </div>
+          <% }); %>
+
+        </div>
+
+    </div>
+
+    
+    
+  </body>
+</html>
+
