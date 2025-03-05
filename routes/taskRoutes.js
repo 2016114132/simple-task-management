@@ -43,4 +43,12 @@ router.post("/toggle-task/:id", (req, res) => {
     res.redirect('/');
 });
 
+router.post("/delete-task/:id", (req, res) => {
+    const indexToRemove = tasks.findIndex(item => item.id == req.params.id);
+
+    tasks.splice(indexToRemove, 1);
+
+    res.redirect('/');
+});
+
 export default router
