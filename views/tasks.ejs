@@ -9,7 +9,7 @@
   <body>
     <div class="container">
         
-        <form>
+        <form method="POST" action="/add-task">
             <div class="input-group">
                 <label for="title">Title</label>
                 <input id="title" type="text" name="title" required />
@@ -47,6 +47,10 @@
           <% }); %>
 
         </div>
+
+        <% if (tasks.length == 0) { %>
+        <p>No Tasks Found</p>
+        <% } %>
 
     </div>
 
