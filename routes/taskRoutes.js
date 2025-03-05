@@ -7,7 +7,7 @@ let tasksCounter = 1;
 
 router.get("/", (req, res) => {
     res.render("tasks", {
-        title: "Welcome!",
+        title: "Task Management",
         tasks: tasks
     });
 });
@@ -34,6 +34,10 @@ router.post("/add-task", (req, res) => {
 });
 
 router.post("/toggle-task/:id", (req, res) => {
+    if(!req.params.id){
+        res.status(400).send('Invalid Task ID!');        
+    }
+
     tasks.forEach(item => {
         if(item.id == req.params.id){
             item.completed = !item.completed;
@@ -44,6 +48,10 @@ router.post("/toggle-task/:id", (req, res) => {
 });
 
 router.post("/delete-task/:id", (req, res) => {
+    if(!req.params.id){
+        res.status(400).send('Invalid Task ID!');        
+    }
+
     const indexToRemove = tasks.findIndex(item => item.id == req.params.id);
 
     tasks.splice(indexToRemove, 1);
