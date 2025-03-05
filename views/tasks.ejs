@@ -40,8 +40,13 @@
             <div class="column col1"><%= item.title %></div>
             <div class="column col2"><%= item.description %></div>
             <div class="column col3">
-              <button class="complete" type="submit"><% if (item.completed) { %> Remove Completed <% } else { %> Complete Task  <% } %></button>
-              <button class="delete" type="submit">Delete</button>
+              <form method="POST" action="/toggle-task/<%= item.id %>">
+                <button class="complete" type="submit"><% if (item.completed) { %> Clear <% } else { %> Complete Task  <% } %></button>
+              </form>
+
+              <form method="POST" action="/delete-task/<%= item.id %>">
+                <button class="delete" type="submit">Delete</button>
+              </form>
             </div>
           </div>
           <% }); %>

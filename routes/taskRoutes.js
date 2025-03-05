@@ -33,4 +33,14 @@ router.post("/add-task", (req, res) => {
     res.redirect('/');
 });
 
+router.post("/toggle-task/:id", (req, res) => {
+    tasks.forEach(item => {
+        if(item.id == req.params.id){
+            item.completed = !item.completed;
+        }
+    });
+
+    res.redirect('/');
+});
+
 export default router
